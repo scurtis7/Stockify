@@ -9,6 +9,22 @@ logging:
       scurtis:
         stockify: DEBUG
 
+spring:
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+      naming:
+            physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+    database: postgresql
+    properties:
+      hibernate:
+        default_schema: stockify
+  datasource:
+    platform: postgres
+    url: jdbc:postgresql://localhost:5432/postgres
+    username: curtis
+    password: curtis
 
 
 
