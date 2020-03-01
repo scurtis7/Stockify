@@ -1,0 +1,21 @@
+
+server:
+  port: 8080
+
+logging:
+  level:
+    root: INFO
+    com:
+      scurtis:
+        stockify: DEBUG
+
+spring:
+  datasource:
+    username: curtis
+    password: curtis
+
+com:
+  scurtis:
+    stockify:
+      apikey: 123
+

@@ -7,7 +7,7 @@ logging:
     root: INFO
     com:
       scurtis:
-        stockify: DEBUG
+        stockify: INFO
 
 spring:
   jpa:
@@ -23,8 +23,6 @@ spring:
   datasource:
     platform: postgres
     url: jdbc:postgresql://localhost:5432/postgres
-    username: curtis
-    password: curtis
 
 
 
