@@ -1,5 +1,6 @@
 package com.scurtis.stockify.config;
 
+import com.scurtis.stockify.converter.StockifyConverter;
 import com.scurtis.stockify.webservice.AlphaVantageService;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -19,8 +20,13 @@ public class StockifyConfiguration {
     }
 
     @Bean
-    public AlphaVantageService alphaVantageService(RestTemplate restTemplate) {
-        return new AlphaVantageService(restTemplate);
+    public AlphaVantageService alphaVantageService(RestTemplate restTemplate, StockifyConverter converter) {
+        return new AlphaVantageService(restTemplate, converter);
+    }
+
+    @Bean
+    public StockifyConverter stockifyConverter() {
+        return new StockifyConverter();
     }
 
 }
