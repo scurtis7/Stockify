@@ -13,13 +13,13 @@ build/
 out/
 
 # React Webapp dependencies
-/node_modules
+/src/webapp/node_modules
 /.pnp
 .pnp.js
 
 # testing
 /coverage
-/src/main/resources/static/
+src/main/resources/static/
 
 # production
 /build
