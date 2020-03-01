@@ -45,7 +45,7 @@ Next build the Spring Boot application with these steps:
 ### Start the application
 Once the application is built you can run it with the following command:
 - In the terminal from the same location you ran the build from
-- run the following command `./gradlew boot-run`
+- run the following command `./gradlew bootRun`
 - navigate to the [Stockify application](http://localhost:8080)
 
 **NOTE:** You can also build and run the application from IntelliJ
