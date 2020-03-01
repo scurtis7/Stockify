@@ -6,7 +6,7 @@ build/
 !**/src/test/**
 
 ## private information
-/src/main/resources/application-dev.yml
+src/main/resources/application-dev.yml
 
 ### IntelliJ IDEA ###
 .idea
