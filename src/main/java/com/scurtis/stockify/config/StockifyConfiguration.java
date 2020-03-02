@@ -25,8 +25,8 @@ public class StockifyConfiguration {
     }
 
     @Bean
-    public AlphaVantageService alphaVantageService(RestTemplate restTemplate, StockifyConverter converter) {
-        return new AlphaVantageService(restTemplate, converter);
+    public AlphaVantageService alphaVantageService(RestTemplate restTemplate, StockifyConverter converter, StockifyProperties properties) {
+        return new AlphaVantageService(restTemplate, converter, properties);
     }
 
     @Bean

@@ -10,9 +10,6 @@ public class AppConstants {
     // Base URL
     public static final String BASE_URL = "https://www.alphavantage.co/query?";
 
-    // Api Key
-    public static final String API_KEY = "&apikey=";
-
     // Symbol
     public static final String SYMBOL = "&symbol=";
 

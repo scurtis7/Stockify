@@ -1,6 +1,6 @@
 package com.scurtis.stockify.config;
 
-import lombok.Data;
+import lombok.Setter;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 
 import javax.annotation.PostConstruct;
@@ -12,7 +12,7 @@ import static org.springframework.util.Assert.notNull;
  * Date: Mar 01, 2020
  **/
 
-@Data
+@Setter
 @ConfigurationProperties(prefix = "com.scurtis.stockify")
 public class StockifyProperties {
 
@@ -20,7 +20,11 @@ public class StockifyProperties {
 
     @PostConstruct
     public void postConstruct() {
-        notNull(getApikey(), "com.scurtis.stockify.apikey property must be set and may not be null");
+        notNull(apikey, "com.scurtis.stockify.apikey property must be set and may not be null");
+    }
+
+    public String getApikey() {
+        return "&apikey=" + apikey;
     }
 
 }
