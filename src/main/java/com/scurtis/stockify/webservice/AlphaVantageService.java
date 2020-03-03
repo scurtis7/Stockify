@@ -26,12 +26,12 @@ public class AlphaVantageService {
     private final StockifyConverter converter;
     private final StockifyProperties properties;
 
-    public List<Stock> search(String search) {
-        String url = BASE_URL + FUNCTION_SYMBOL_SEARCH + "&keywords=" + search + properties.getApikey();
+    public List<Stock> search(String keyword) {
+        String url = BASE_URL + FUNCTION_SYMBOL_SEARCH + "&keywords=" + keyword + properties.getApikey();
         return converter.convertStockData(callWebservice(url).getBody());
     }
 
-    public ResponseEntity<String> callWebservice(String url) {
+    private ResponseEntity<String> callWebservice(String url) {
         log.info("Method: callWebservice({})", url);
         return restTemplate.getForEntity(url, String.class);
     }

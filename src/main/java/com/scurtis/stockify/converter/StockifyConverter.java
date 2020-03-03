@@ -24,23 +24,9 @@ public class StockifyConverter {
     private static final String NODE_NAME = "2. name";
     private static final String NODE_TYPE = "3. type";
     private static final String NODE_REGION = "4. region";
-    private static final String NODE_MARKET_OPEN = "5. marketOpen";
-    private static final String NODE_MARKET_CLOSE = "6. marketClose";
     private static final String NODE_TIMEZONE = "7. timezone";
     private static final String NODE_CURRENCY = "8. currency";
-    private static final String NODE_MATCH_SCORE = "9. matchScore";
 
-    /**
-     * "1. symbol": "XIACF",
-     * "2. name": "Xiaomi Corporation",
-     * "3. type": "Equity",
-     * "4. region": "United States",
-     * "5. marketOpen": "09:30",
-     * "6. marketClose": "16:00",
-     * "7. timezone": "UTC-05",
-     * "8. currency": "USD",
-     * "9. matchScore": "0.5455"
-     */
     public List<Stock> convertStockData(String data) {
         log.info("Method: convertStockData()");
         List<Stock> searchResults = new ArrayList<>();
@@ -72,6 +58,7 @@ public class StockifyConverter {
         stock.setType(arrayItem.get(NODE_TYPE).textValue());
         stock.setRegion(arrayItem.get(NODE_REGION).textValue());
         stock.setTimezone(arrayItem.get(NODE_TIMEZONE).textValue());
+        stock.setCurrency(arrayItem.get(NODE_CURRENCY).textValue());
         return stock;
     }
 
