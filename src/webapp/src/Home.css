@@ -1,0 +1,51 @@
+
+.Home {
+    margin: 10px;
+    padding: 10px;
+}
+
+.Home-row {
+    color: #CEB888;
+}
+
+.Home-button {
+    background-color: #CEB888;
+    color: #782F40;
+    border-color: #782F40;
+}
+
+.Home-button:hover {
+    background-color: #782F40;
+    color: #CEB888;
+    border-color: #CEB888;
+}
+
+.Home-button:active {
+    background-color: #782F40;
+    color: #CEB888;
+    border-color: #CEB888;
+}
+
+.Home-button:focus {
+    background-color: #782F40;
+    color: #CEB888;
+    border-color: #CEB888;
+}
+
+.Home-button:active:focus {
+    background-color: #782F40;
+    color: #CEB888;
+    border-color: #CEB888;
+}
+
+.Home-button-active {
+    background-color: #782F40;
+    color: #CEB888;
+    border-color: #CEB888;
+}
+
+.Home-input-group-text {
+    background-color: #782F40;
+    color: #CEB888;
+    width: 60px;
+}
