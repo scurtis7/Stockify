@@ -48,7 +48,6 @@ public class StockifyConverter {
         }
 
         return searchResults;
-
     }
 
     private Stock convertArrayItemToStock(JsonNode arrayItem) {
