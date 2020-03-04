@@ -1,4 +1,5 @@
 import React, {Component} from "react";
+import "./About.css"
 import {Container, Row, Badge} from 'reactstrap';
 
 class About extends Component {

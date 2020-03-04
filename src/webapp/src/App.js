@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import Home from "./Home";
+import Search from "./Search";
 import Stocks from "./Stocks";
 import Watchlist from "./Watchlist";
 import About from "./About";
@@ -30,8 +31,9 @@ class App extends Component {
                         <NavbarToggler onClick={this.toggle}/>
                         <Collapse isOpen={this.state.isOpen} navbar>
                             <Nav className="mr-auto" navbar>
-                                <NavItem><NavLink className="navlink" activeClassName="navlinkactive" to="/Stocks">Stocks</NavLink></NavItem>
-                                <NavItem><NavLink className="navlink" activeClassName="navlinkactive" to="/Watchlist">Watchlist</NavLink></NavItem>
+                                <NavItem><NavLink className="navlink" activeClassName="navlinkactive" to="/search">Search</NavLink></NavItem>
+                                <NavItem><NavLink className="navlink" activeClassName="navlinkactive" to="/stocks">Stocks</NavLink></NavItem>
+                                <NavItem><NavLink className="navlink" activeClassName="navlinkactive" to="/watchlist">Watchlist</NavLink></NavItem>
                             </Nav>
                             <Nav className="ml-auto" navbar>
                                 <NavItem><NavLink className="navlink" activeClassName="navlinkactive" to="/about">About</NavLink></NavItem>
@@ -42,8 +44,9 @@ class App extends Component {
                 </div>
                 <div className="content">
                     <Route exact path="/" component={Home}/>
-                    <Route path="/Stocks" component={Stocks}/>
-                    <Route path="/Watchlist" component={Watchlist}/>
+                    <Route path="/search" component={Search}/>
+                    <Route path="/stocks" component={Stocks}/>
+                    <Route path="/watchlist" component={Watchlist}/>
                     <Route path="/about" component={About}/>
                     <Route path="/signin" component={SignIn}/>
                 </div>

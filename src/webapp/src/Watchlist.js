@@ -1,4 +1,5 @@
 import React, {Component} from "react";
+import "./Watchlist.css"
 import {Container, Row, Badge} from 'reactstrap';
 
 class Watchlist extends Component {

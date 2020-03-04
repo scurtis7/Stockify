@@ -1,4 +1,5 @@
 import React, {Component} from "react";
+import "./Stocks.css"
 import {Container, Row, Badge} from 'reactstrap';
 
 class Stocks extends Component {
