@@ -3,6 +3,9 @@
 This application will allow you to follow and research stocks.  I use the 
 [Alpha Vantage API](https://www.alphavantage.co/documentation/#) to get stock information.
 
+## Version 0.0.2
+Add search page functionality.
+
 ## Version 0.0.1
 This is the initial version with all of the three main pieces (Spring Boot, ReactJS & Postgresql) working together.
 Not much functionality yet just the initial shell of the application.
