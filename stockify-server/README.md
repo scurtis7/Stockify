@@ -28,9 +28,11 @@ To build the Stockify Server and generate code coverage:
 
 In order to run the Stockify Server the following environmental variables must be set:
 
-| VARIABLE              | Description                                                    |
-|:----------------------|:---------------------------------------------------------------|
-| SPRING_DATASOURCE_URL | The URL to the Postgresql database including the user/password |
+| VARIABLE                   | Description                          |
+|:---------------------------|:-------------------------------------|
+| SPRING_DATASOURCE_URL      | The URL to the Postgresql database   |
+| SPRING_DATASOURCE_USERNAME | Username for the Postgresql database |
+| SPRING_DATASOURCE_PASSWORD | Password for the Postgresql database |
 
 ## Endpoints
 A brief description of the endpoints can be found in this section.
