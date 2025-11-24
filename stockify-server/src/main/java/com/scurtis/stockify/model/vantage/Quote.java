@@ -7,6 +7,7 @@ import lombok.Data;
 @Data
 public class Quote {
 
+    private String series;
     private String symbol;
     private LocalDate date;
     private BigDecimal open;

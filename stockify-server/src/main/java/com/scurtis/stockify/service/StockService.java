@@ -10,9 +10,11 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestClient;
 
+@Slf4j
 @Service
 @RequiredArgsConstructor
 public class StockService {
@@ -31,23 +33,21 @@ public class StockService {
 
         JsonNode rootNode = objectMapper.readTree(result);
         JsonNode timeSeriesNode = getTimeSeriesNode(function, rootNode);
-        return getQuotes(symbol, timeSeriesNode);
+        return getQuotes(function, symbol, timeSeriesNode);
     }
 
     private JsonNode getTimeSeriesNode(String function, JsonNode rootNode) {
-        if (function.equalsIgnoreCase("Intraday")) {
-            return rootNode.get("Time Series (Intraday)");
-        } else if (function.equalsIgnoreCase("Daily")) {
+        if (function.equalsIgnoreCase("Daily")) {
             return rootNode.get("Time Series (Daily)");
         } else if (function.equalsIgnoreCase("Weekly")) {
-            return rootNode.get("Time Series (Weekly)");
+            return rootNode.get("Weekly Time Series");
         } else if (function.equalsIgnoreCase("Monthly")) {
-            return rootNode.get("Time Series (Monthly)");
+            return rootNode.get("Monthly Time Series");
         }
         return null;
     }
 
-    private List<Quote> getQuotes(String symbol, JsonNode timeSeriesNode) {
+    private List<Quote> getQuotes(String function, String symbol, JsonNode timeSeriesNode) {
         List<Quote> quotes = new ArrayList<>();
         if (timeSeriesNode != null) {
             Iterator<String> dateFieldNames = timeSeriesNode.fieldNames();
@@ -55,6 +55,13 @@ public class StockService {
                 String date = dateFieldNames.next();
                 LocalDate quoteDate = LocalDate.parse(date);
                 Quote quote = new Quote();
+                if (function.equalsIgnoreCase("Daily")) {
+                    quote.setSeries("Daily");
+                } else if (function.equalsIgnoreCase("Weekly")) {
+                    quote.setSeries("Weekly");
+                } else if (function.equalsIgnoreCase("Monthly")) {
+                    quote.setSeries("Monthly");
+                }
                 quote.setSymbol(symbol);
                 quote.setDate(quoteDate);
                 JsonNode quoteNode = timeSeriesNode.get(date);
@@ -70,16 +77,18 @@ public class StockService {
     }
 
     private String getUri(String function, String symbol) {
-        if (function.equalsIgnoreCase("Intraday")) {
-            function = "TIME_SERIES_INTRADAY";
-        } else if (function.equalsIgnoreCase("Daily")) {
-            function = "TIME_SERIES_DAILY";
+        StringBuilder url = new StringBuilder(avConfig.getUrl()
+            + "/query?apikey=" + avConfig.getApiKey()
+            + "&symbol=" + symbol);
+        if (function.equalsIgnoreCase("Daily")) {
+            url.append("&function=TIME_SERIES_DAILY");
         } else if (function.equalsIgnoreCase("Weekly")) {
-            function = "TIME_SERIES_WEEKLY";
+            url.append("&function=TIME_SERIES_WEEKLY");
         } else if (function.equalsIgnoreCase("Monthly")) {
-            function = "TIME_SERIES_MONTHLY";
+            url.append("&function=TIME_SERIES_MONTHLY");
         }
-        return String.format("%s/query?apikey=%s&function=%s&symbol=%s", avConfig.getUrl(), avConfig.getApiKey(), function, symbol);
+        log.debug(url.toString());
+        return url.toString();
     }
 
 }
